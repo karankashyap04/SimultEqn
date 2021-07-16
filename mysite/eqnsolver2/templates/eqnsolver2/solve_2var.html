@@ -1,0 +1,53 @@
+
+{% extends 'eqnsolver2/base.html' %}
+
+{% block main_content %}
+
+    <h1> 2 Variable Simultaneous Equation Solver </h1>
+
+    {% if error_message %} <p><b> {{error_message}} </b></p> {% endif %}
+
+    <hr>
+    <br><br>
+
+    <h2> The 2 equations are: </h2>
+    <ul>
+        <li> <b>a</b>x + <b>b</b>y = <b>c</b>  . . . (1) </li>
+        <li> <b>d</b>x + <b>e</b>y = <b>f</b>  . . . (2) </li>
+    </ul>
+
+    <br>
+
+    <h3> Enter the values of <b>a, b, c, d, e</b> and <b>f:</b> </h3>
+
+    <form action = "{% url 'eqnsolver2:results_2var' %}" method="post">
+        {% csrf_token %}
+
+        <label for="a"> Enter the value of <b>a</b> (numeric value): </label>
+        <input type="number" step="any" id="a" name="a">  <!--step="any" allows even decimal values-->
+        <br><br>
+
+        <label for="b"> Enter the value of <b>b</b> (numeric value): </label>
+        <input type="number" step="any" id="b" name="b">
+        <br><br>
+
+        <label for="c"> Enter the value of <b>c</b> (numeric value): </label>
+        <input type="number" step="any" id="c" name="c">
+        <br><br>
+
+        <label for="d"> Enter the value of <b>d</b> (numeric value): </label>
+        <input type="number" step="any" id="d" name="d">
+        <br><br>
+
+        <label for="e"> Enter the value of <b>e</b> (numeric value): </label>
+        <input type="number" step="any" id="e" name="e">
+        <br><br>
+
+        <label for="f"> Enter the value of <b>f</b> (numeric value): </label>
+        <input type="number" step="any" id="f" name="f">
+        <br><br><br>
+
+        <input type="submit" value="submit">
+    </form>
+
+{% endblock %}

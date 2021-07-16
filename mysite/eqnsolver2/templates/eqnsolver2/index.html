@@ -1,0 +1,19 @@
+{% extends 'eqnsolver2/base.html' %}
+
+{% block main_content %}
+
+    {% if latest_questions %}
+        {% for question in latest_questions %}
+            <b> {{question.question_text}} </b>
+        {% endfor %}
+        <ul>
+<!--            <li><a href = '/eqnsolver/solve_2var'> 2 Variable Simultaneous Equation Solver </a></li>-->
+            <li><a href = "{% url 'eqnsolver2:solve_2var' %}"> 2 Variable Simultaneous Equation Solver </a></li>
+<!--            <li><a href = '/eqnsolver/solve_3var'> 3 Variable Simultaneous Equation Solver </a></li>-->
+            <li><a href = "{% url 'eqnsolver2:solve_3var' %}"> 3 Variable Simultaneous Equation Solver </a></li>
+        </ul>
+    {% else %}
+    <p> There was an error! You don't have any questions! </p>
+    {% endif %}
+
+{% endblock %}
